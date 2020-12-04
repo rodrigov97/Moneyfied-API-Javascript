@@ -1,4 +1,4 @@
-export class Receita {
+class Receita {
     ReceitaId;
     UsuarioId;
     CategoriaReceitaId;

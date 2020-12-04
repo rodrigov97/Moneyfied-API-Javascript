@@ -1,4 +1,4 @@
-const { Route } = require('express'),
+const { Router } = require('express'),
     DespesaCategoria = require('../models/despesaCategoria.model'),
     AuthRepository = require('../repositories/auth.repository'),
     DespesaCategoriaRepository = require('../repositories/despesaCategoria.repository');

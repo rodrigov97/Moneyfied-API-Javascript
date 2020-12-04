@@ -15,7 +15,7 @@ class LoginRepository {
                            , Email
                            , StatusUsuarioId
                            , EmailConfirmado
-                        = require(Usuario 
+                        FROM Usuario 
                        WHERE BINARY Email = BINARY '${usuario.Email}' 
                          AND BINARY Senha = BINARY '${usuario.Senha}'
                          AND StatusUsuarioId = 1;`;

@@ -23,7 +23,7 @@ class DashboardRepository {
                 else {
                     res.status(200).send({
                         success: true,
-                        receitas
+                        receitas: response
                     });
                 }
             });
@@ -51,7 +51,7 @@ class DashboardRepository {
                 else {
                     res.status(200).send({
                         success: true,
-                        despesas
+                        despesas: response
                     });
                 }
             });
@@ -64,9 +64,9 @@ class DashboardRepository {
     getGoal(userId, req, res) {
         var script = `SELECT Nome
                            , CONCAT((ValorAtual / ValorObjetivo) * 100, '%') AS Porcentagem
-                           , CASE WHEN DATE_FORMAT(DataLimite, "%d/%m/%Y") <= DATE_FORMAT(NOW(), "%d/%m/%Y") AND ValorAtual >= ValorObjetivo THEN '$zAlcancado}'
-                                  WHEN DATE_FORMAT(DataLimite, "%d/%m/%Y") >= DATE_FORMAT(NOW(), "%d/%m/%Y") AND ValorAtual < ValorObjetivo THEN '${GoalStatus.EmAndamento}'
-                                  WHEN DATE_FORMAT(DataLimite, "%d/%m/%Y") < DATE_FORMAT(NOW(), "%d/%m/%Y") AND ValorAtual < ValorObjetivo THEN '${GoalStatus.NaoAlcancado}'
+                           , CASE WHEN DATE_FORMAT(DataLimite, "%d/%m/%Y") <= DATE_FORMAT(NOW(), "%d/%m/%Y") AND ValorAtual >= ValorObjetivo THEN 'Alcancado'
+                                  WHEN DATE_FORMAT(DataLimite, "%d/%m/%Y") >= DATE_FORMAT(NOW(), "%d/%m/%Y") AND ValorAtual < ValorObjetivo THEN 'EmAndamento'
+                                  WHEN DATE_FORMAT(DataLimite, "%d/%m/%Y") < DATE_FORMAT(NOW(), "%d/%m/%Y") AND ValorAtual < ValorObjetivo THEN 'NaoAlcancado'
                              END AS Status
                         FROM Objetivo
                        WHERE UsuarioId = ${userId}`;
@@ -80,7 +80,7 @@ class DashboardRepository {
                 else {
                     res.status(200).send({
                         success: true,
-                        objetivos
+                        objetivos: response
                     });
                 }
             });
@@ -102,7 +102,8 @@ class DashboardRepository {
                      FROM Despesa
                     WHERE UsuarioId = ${userId}
                       AND YEAR(DataPagamento) = YEAR(NOW())
-                      AND MONTH(DataPagamento) = MONTH(NOW());`;
+                      AND MONTH(DataPagamento) = MONTH(NOW());
+                      `;
 
         script += `SELECT FORMAT(IFNULL((SELECT IFNULL(SUM(IFNULL(Valor,0)),0) AS TotalReceita
                      FROM Receita
@@ -122,9 +123,9 @@ class DashboardRepository {
                 }
                 else if (response[0].length > 0) {
                     var values = {
-                        ReceitaValue: ReceitaValue[0][0] ? response[0][0].TotalReceita : '0,00',
-                        DespesaValue: DespesaValue[1][0] ? response[1][0].TotalDespesa : '0,00',
-                        Saldo: Saldo[2][0].Saldo
+                        ReceitaValue: response[0][0] ? response[0][0].TotalReceita : '0,00',
+                        DespesaValue: response[1][0] ? response[1][0].TotalDespesa : '0,00',
+                        Saldo: response[2][0].Saldo
                     };
 
                     res.status(200).send({

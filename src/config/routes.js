@@ -1,5 +1,6 @@
 const express = require('express'),
     IndexRoutes = require('../routes/main.route'),
+    LoginController = require('../controllers/login.controller'),
     UsuarioController = require('../controllers/usuario.controller'),
     MailerController = require('../controllers/mailer.controller'),
     UploadController = require('../controllers/upload.controller'),
@@ -14,6 +15,8 @@ const routesConfig = (app) => {
     const URL = '/api/v1';
 
     app.use(express.static('dist/Moneyfied-Web/'));
+
+    app.use(`${URL}/login`, LoginController);
 
     app.use(`${URL}/user`, UsuarioController);
 

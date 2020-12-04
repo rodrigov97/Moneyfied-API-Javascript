@@ -5,6 +5,7 @@ const pool = mysql.createPool({
     user: 'root',
     password: 'admin123',
     database: 'moneyfied',
+    multipleStatements: true,
     typeCast: function castField(field, useDefaultTypeCasting) {
         if ((field.type === "BIT") && (field.length === 1)) {
             var bytes = field.buffer();
