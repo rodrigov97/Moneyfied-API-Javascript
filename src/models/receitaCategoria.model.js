@@ -6,8 +6,8 @@ class ReceitaCategoria {
     Nome;
 
     constructor(attr) {
-        this.CategoriaReceitaId = attr.CategoriaReceitaId || null;
-        this.UsuarioId = attr.UsuarioId || null;
+        this.CategoriaReceitaId = attr.CategoriaReceitaId ? attr.CategoriaReceitaId : null;
+        this.UsuarioId = attr.UsuarioId ? attr.UsuarioId : null;
         this.Nome = attr.Nome;
     }
 }

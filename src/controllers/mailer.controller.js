@@ -26,7 +26,7 @@ router.use('/email-confirmation-answer', (req, res) => {
             message: 'No identificator'
         });
 
-    const id = req.query.id.toString();
+    const id = req.query.userData.toString();
     user.updateEmailVerification(id, req, res);
 });
 
@@ -48,7 +48,7 @@ router.use('/password-reset', (req, res) => {
             message: 'No identificator'
         });
 
-    const id = req.query.id.toString();
+    const id = req.query.userData.toString();
     mail.resetUserPassword(id, req, res);
 });
 

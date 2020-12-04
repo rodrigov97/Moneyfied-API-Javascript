@@ -4,8 +4,8 @@ class DespesaCategoria {
     Nome;
 
     constructor(attr) {
-        this.CategoriaDespesaId = attr.CategoriaDespesaId || null;
-        this.UsuarioId = attr.UsuarioId || null;
+        this.CategoriaDespesaId = attr.CategoriaDespesaId ? attr.CategoriaDespesaId : null;
+        this.UsuarioId = attr.UsuarioId ? attr.UsuarioId : null;
         this.Nome = attr.Nome;
     }
 }

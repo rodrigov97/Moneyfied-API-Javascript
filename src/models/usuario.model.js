@@ -12,7 +12,7 @@ class Usuario {
         this.Email = attr.Email;
         this.Senha = attr.Senha;
         this.ImagemPerfil = attr.ImagemPerfil;
-        this.EmailConfirmado = attr.EmailConfirmado || null;
+        this.EmailConfirmado = attr.EmailConfirmado;
     }
 }
 

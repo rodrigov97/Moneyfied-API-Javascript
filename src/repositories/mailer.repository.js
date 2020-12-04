@@ -33,7 +33,7 @@ class MailerRepository {
                         MailerRepository.mail.setOptions(
                             user.Email,
                             '✔️ Verificar Email',
-                            type.EmailConfirmation
+                            'EmailConfirmation'
                         );
 
                         MailerRepository.mail.send(res);
@@ -74,7 +74,7 @@ class MailerRepository {
                         MailerRepository.mail.setOptions(
                             user.Email,
                             '🛡️ Resetar Senha',
-                            type.PasswordResetConfirmation
+                            'PasswordResetConfirmation'
                         );
 
                         MailerRepository.mail.send(res);
@@ -139,7 +139,7 @@ class MailerRepository {
                         MailerRepository.mail.setOptions(
                             user.Email,
                             '🔑 Nova Senha',
-                            type.PasswordReset
+                            'PasswordReset'
                         );
 
                         MailerRepository.mail.send(res, function (success, error) {

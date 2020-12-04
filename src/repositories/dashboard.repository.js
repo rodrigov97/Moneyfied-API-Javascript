@@ -185,8 +185,8 @@ class DashboardRepository {
                 }
                 else {
                     res.status(200).send({
-                        success: false,
-                        error: error
+                        success: true,
+                        empty: true
                     });
                 }
             });
