@@ -4,7 +4,7 @@ const router = Router(),
     IndexRoutes = router;
 
 router.get('/', (req, res) => {
-    res.send('Inserir home page');
+    res.sendFile('dist/Moneyfied-Web/index.html', { root: '.' });
 });
 
 module.exports = IndexRoutes;

@@ -7,7 +7,7 @@ class DashboardRepository {
 
     getIncome(userId, req, res) {
         var script = `SELECT Descricao
-                           , CAST(FORMAT(IFNULL(Valor,0),2,'pt_BR') AS VARCHAR(100)) AS Valor
+                           , FORMAT(IFNULL(Valor,0),2,'pt_BR') AS Valor
                         FROM Receita
                        WHERE UsuarioId = ${userId}
                          AND YEAR(DataRecebimento) = YEAR(NOW())

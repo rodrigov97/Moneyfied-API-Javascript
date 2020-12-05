@@ -1,16 +1,4 @@
 class Despesa {
-    DespesaId;
-    UsuarioId;
-    CategoriaDespesaId;
-    Descricao;
-    Valor;
-    Parcelado;
-    ParcelaQtd;
-    ParcelaNumero;
-    ParcelaValor;
-    DataInicial;
-    DataFinal;
-    DataPagamento;
 
     constructor(attr) {
         this.DespesaId = attr.DespesaId ? attr.DespesaId : null;

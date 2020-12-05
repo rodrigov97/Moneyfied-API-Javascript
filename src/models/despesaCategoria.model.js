@@ -1,7 +1,4 @@
 class DespesaCategoria {
-    CategoriaDespesaId;
-    UsuarioId;
-    Nome;
 
     constructor(attr) {
         this.CategoriaDespesaId = attr.CategoriaDespesaId ? attr.CategoriaDespesaId : null;

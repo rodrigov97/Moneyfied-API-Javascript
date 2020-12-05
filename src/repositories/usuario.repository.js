@@ -5,9 +5,9 @@ const { Request, Response } = require('express'),
 
 class UsuarioRepository {
 
-    constructor() { }
-
-    static mail = new Mail();
+    constructor() { 
+        this.mail = new Mail();
+    }
 
     postUser(usuario, req, res) {
         var script = `SELECT Email
@@ -91,15 +91,15 @@ class UsuarioRepository {
                     if (response.length > 0) {
                         const user = new Usuario(response[0]);
 
-                        UsuarioRepository.mail.setUserInfo(user);
+                        this.mail.setUserInfo(user);
 
-                        UsuarioRepository.mail.setOptions(
+                        this.mail.setOptions(
                             user.Email,
                             '✔️ Verificar Email',
                             'EmailConfirmation'
                         );
 
-                        UsuarioRepository.mail.send(res, function (success, error) {
+                        this.mail.send(res, function (success, error) {
                             if (error) {
                                 res.status(500).send({
                                     success: false,

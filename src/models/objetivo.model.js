@@ -1,13 +1,4 @@
 class Objetivo {
-    ObjetivoId;
-    UsuarioId;
-    Nome;
-    ValorObjetivo;
-    ValorAtual;
-    DataLimite;
-    DataObjetivo;
-    Status;
-    Porcentagem;
 
     constructor(attr) {
         this.ObjetivoId = attr.ObjetivoId ? attr.ObjetivoId : null;

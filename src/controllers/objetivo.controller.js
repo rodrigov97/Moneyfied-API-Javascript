@@ -1,6 +1,6 @@
 const { Router } = require('express'),
     AuthRepository = require('../repositories/auth.repository'),
-    Objetivo = require('../models/Objetivo.model'),
+    Objetivo = require('../models/objetivo.model'),
     ObjetivoRepository = require('../repositories/objetivo.repository');
 
 const router = Router(),

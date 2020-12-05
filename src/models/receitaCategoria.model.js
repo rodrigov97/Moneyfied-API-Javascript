@@ -1,9 +1,6 @@
 const { Receita } = require("./receita.model");
 
 class ReceitaCategoria {
-    CategoriaReceitaId;
-    UsuarioId;
-    Nome;
 
     constructor(attr) {
         this.CategoriaReceitaId = attr.CategoriaReceitaId ? attr.CategoriaReceitaId : null;

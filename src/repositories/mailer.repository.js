@@ -4,9 +4,9 @@ const sql = require('../config/database.config'),
 
 class MailerRepository {
 
-    constructor() { }
-
-    static mail = new Mail();
+    constructor() {
+        this.mail = new Mail();
+    }
 
     verifyUserEmail(email, req, res) {
         var script = `SELECT UsuarioId
@@ -28,15 +28,15 @@ class MailerRepository {
                     if (response.length > 0) {
                         const user = new Usuario(response[0]);
 
-                        MailerRepository.mail.setUserInfo(user);
+                        this.mail.setUserInfo(user);
 
-                        MailerRepository.mail.setOptions(
+                        this.mail.setOptions(
                             user.Email,
                             '✔️ Verificar Email',
                             'EmailConfirmation'
                         );
 
-                        MailerRepository.mail.send(res);
+                        this.mail.send(res);
                     }
                     else {
                         res.send({ success: false, message: 'Email inválido !' });
@@ -69,15 +69,15 @@ class MailerRepository {
                     if (response.length > 0) {
                         const user = new Usuario(response[0]);
 
-                        MailerRepository.mail.setUserInfo(user);
+                        this.mail.setUserInfo(user);
 
-                        MailerRepository.mail.setOptions(
+                        this.mail.setOptions(
                             user.Email,
                             '🛡️ Resetar Senha',
                             'PasswordResetConfirmation'
                         );
 
-                        MailerRepository.mail.send(res);
+                        this.mail.send(res);
                     }
                     else {
                         res.send({ success: false, message: 'Email inválido !' });
@@ -134,15 +134,15 @@ class MailerRepository {
                     if (response.length > 0) {
                         const user = new Usuario(response[0]);
 
-                        MailerRepository.mail.setUserInfo(user);
+                        this.mail.setUserInfo(user);
 
-                        MailerRepository.mail.setOptions(
+                        this.mail.setOptions(
                             user.Email,
                             '🔑 Nova Senha',
                             'PasswordReset'
                         );
 
-                        MailerRepository.mail.send(res, function (success, error) {
+                        this.mail.send(res, function (success, error) {
                             if (error) {
                                 res.status(301).redirect("http://localhost:4200/confirmation-response/password/false");
                             }

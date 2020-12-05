@@ -4,10 +4,10 @@ const config = require('./mailerConfig'),
 
 class Mail {
 
-    mailOptions = {};
-    user;
-
-    constructor() { }
+    constructor() {
+        this.mailOptions = {};
+        this.user;
+     }
 
     async send(res, callback)  {
         if (this.mailOptions === {}) return;

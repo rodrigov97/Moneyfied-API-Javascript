@@ -1,10 +1,4 @@
 class Usuario {
-    UsuarioId;
-    Nome;
-    Email;
-    Senha;
-    ImagemPerfil;
-    EmailConfirmado;
 
     constructor(attr) {
         this.UsuarioId = attr.UsuarioId;

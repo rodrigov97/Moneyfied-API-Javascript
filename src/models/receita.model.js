@@ -1,10 +1,4 @@
 class Receita {
-    ReceitaId;
-    UsuarioId;
-    CategoriaReceitaId;
-    Descricao;
-    Valor;
-    DataRecebimento;
 
     constructor(attr) {
         this.ReceitaId = attr.ReceitaId ? attr.ReceitaId : null;
