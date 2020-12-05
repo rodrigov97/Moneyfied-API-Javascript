@@ -36,7 +36,20 @@ class MailerRepository {
                             'EmailConfirmation'
                         );
 
-                        mail.send(res);
+                        mail.send(res, function (success, error) {
+                            if (error) {
+                                res.status(200).send({
+                                    success: false,
+                                    emailEnviado: false
+                                });
+                            }
+                            else {
+                                res.status(200).send({
+                                    success: true,
+                                    emailEnviado: true
+                                });
+                            }
+                        });
                     }
                     else {
                         res.send({ success: false, message: 'Email inválido !' });
@@ -146,10 +159,10 @@ class MailerRepository {
 
                         mail.send(res, function (success, error) {
                             if (error) {
-                                res.status(301).redirect("http://localhost:4200/confirmation-response/password/false");
+                                res.status(200).redirect("http://localhost:4200/confirmation-response/password/false");
                             }
                             else {
-                                res.status(301).redirect("http://localhost:4200/confirmation-response/password/true");
+                                res.status(200).redirect("http://localhost:4200/confirmation-response/password/true");
                             }
                         });
                     }
