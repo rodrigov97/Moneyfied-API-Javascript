@@ -5,8 +5,7 @@ const { Request, Response } = require('express'),
 
 class UsuarioRepository {
 
-    constructor() { 
-        this.mail = new Mail();
+    constructor() {
     }
 
     postUser(usuario, req, res) {
@@ -89,17 +88,18 @@ class UsuarioRepository {
                 }
                 else {
                     if (response.length > 0) {
-                        const user = new Usuario(response[0]);
+                        const user = new Usuario(response[0]),
+                            mail = new Mail();
 
-                        this.mail.setUserInfo(user);
+                        mail.setUserInfo(user);
 
-                        this.mail.setOptions(
+                        mail.setOptions(
                             user.Email,
                             '✔️ Verificar Email',
                             'EmailConfirmation'
                         );
 
-                        this.mail.send(res, function (success, error) {
+                        mail.send(res, function (success, error) {
                             if (error) {
                                 res.status(500).send({
                                     success: false,
@@ -212,10 +212,12 @@ class UsuarioRepository {
         try {
             sql.query(script, function (error, response) {
                 if (error) {
-                    res.status(301).redirect("http://localhost:4200/confirmation-response/email/false");
+                    res.send('Email não confirmado !');
+                    //res.status(301).redirect("http://localhost:4200/confirmation-response/email/false");
                 }
                 else {
-                    res.status(301).redirect("http://localhost:4200/confirmation-response/email/true");
+                    res.send('Email confirmado !');
+                    //res.status(301).redirect("http://localhost:4200/confirmation-response/email/true");
                 }
             });
         }

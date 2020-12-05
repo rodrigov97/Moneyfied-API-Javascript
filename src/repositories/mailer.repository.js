@@ -5,7 +5,6 @@ const sql = require('../config/database.config'),
 class MailerRepository {
 
     constructor() {
-        this.mail = new Mail();
     }
 
     verifyUserEmail(email, req, res) {
@@ -26,17 +25,18 @@ class MailerRepository {
                 }
                 else {
                     if (response.length > 0) {
-                        const user = new Usuario(response[0]);
+                        const user = new Usuario(response[0]),
+                            mail = new Mail();
 
-                        this.mail.setUserInfo(user);
+                        mail.setUserInfo(user);
 
-                        this.mail.setOptions(
+                        mail.setOptions(
                             user.Email,
                             '✔️ Verificar Email',
                             'EmailConfirmation'
                         );
 
-                        this.mail.send(res);
+                        mail.send(res);
                     }
                     else {
                         res.send({ success: false, message: 'Email inválido !' });
@@ -67,17 +67,18 @@ class MailerRepository {
                 }
                 else {
                     if (response.length > 0) {
-                        const user = new Usuario(response[0]);
+                        const user = new Usuario(response[0]),
+                            mail = new Mail();
 
-                        this.mail.setUserInfo(user);
+                        mail.setUserInfo(user);
 
-                        this.mail.setOptions(
+                        mail.setOptions(
                             user.Email,
                             '🛡️ Resetar Senha',
                             'PasswordResetConfirmation'
                         );
 
-                        this.mail.send(res);
+                        mail.send(res);
                     }
                     else {
                         res.send({ success: false, message: 'Email inválido !' });
@@ -132,22 +133,25 @@ class MailerRepository {
                 }
                 else {
                     if (response.length > 0) {
-                        const user = new Usuario(response[0]);
+                        const user = new Usuario(response[0]),
+                            mail = new Mail();
 
-                        this.mail.setUserInfo(user);
+                        mail.setUserInfo(user);
 
-                        this.mail.setOptions(
+                        mail.setOptions(
                             user.Email,
                             '🔑 Nova Senha',
                             'PasswordReset'
                         );
 
-                        this.mail.send(res, function (success, error) {
+                        mail.send(res, function (success, error) {
                             if (error) {
-                                res.status(301).redirect("http://localhost:4200/confirmation-response/password/false");
+                                res.send('Não foi possível gerar uma nova senha !');
+                                //res.status(301).redirect("http://localhost:4200/confirmation-response/password/false");
                             }
                             else {
-                                res.status(301).redirect("http://localhost:4200/confirmation-response/password/true");
+                                res.send('Nova senha gerada com sucesso !');
+                                //res.status(301).redirect("http://localhost:4200/confirmation-response/password/true");
                             }
                         });
                     }
