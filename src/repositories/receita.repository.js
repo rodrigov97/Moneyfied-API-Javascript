@@ -11,7 +11,7 @@ class ReceitaRepository {
                            , R.CategoriaReceitaId
                            , CR.Nome AS Categoria
                            , R.Descricao
-                           , CAST(FORMAT(IFNULL(R.Valor,0),2,'pt_BR') AS VARCHAR(100)) AS Valor
+                           , FORMAT(IFNULL(R.Valor,0),2,'pt_BR') AS Valor
                            , DATE_FORMAT(R.DataRecebimento, "%d/%m/%Y") AS DataRecebimento
                         FROM Receita R
                         LEFT JOIN CategoriaReceita CR ON CR.CategoriaReceitaId = R.CategoriaReceitaId

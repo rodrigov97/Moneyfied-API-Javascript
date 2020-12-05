@@ -131,7 +131,7 @@ class UsuarioRepository {
         var script = `SELECT Nome
                            , Email
                            , Senha
-                           , ImagemPerfil
+                           , IFNULL(ImagemPerfil, 'NoImage.png') AS ImagemPerfil
                         FROM Usuario
                        WHERE UsuarioId = '${usuarioId}'`;
 

@@ -11,11 +11,11 @@ class DespesaRepository {
                            , D.CategoriaDespesaId
                            , CD.Nome AS Categoria
                            , D.Descricao
-                           , CAST(FORMAT(IFNULL(D.Valor,0),2,'pt_BR') AS VARCHAR(100)) AS Valor
+                           , FORMAT(IFNULL(D.Valor,0),2,'pt_BR') AS Valor
                            , D.Parcelado
                            , D.ParcelaQtd
                            , CONCAT("(", D.ParcelaNumero, "/", D.ParcelaQtd, ")") AS ParcelaNumero
-                           , CAST(FORMAT(IFNULL(D.ParcelaValor,0),2,'pt_BR') AS VARCHAR(100)) AS ParcelaValor
+                           , FORMAT(IFNULL(D.ParcelaValor,0),2,'pt_BR') AS ParcelaValor
                            , DATE_FORMAT(D.DataInicial, "%d/%m/%Y") AS DataInicial
                            , DATE_FORMAT(D.DataFinal, "%d/%m/%Y") AS DataFinal
                            , DATE_FORMAT(D.DataPagamento, "%d/%m/%Y") AS DataPagamento

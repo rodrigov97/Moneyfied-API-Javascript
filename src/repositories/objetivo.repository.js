@@ -10,8 +10,8 @@ class ObjetivoRepository {
         var script = `SELECT O.ObjetivoId
                            , O.UsuarioId
                            , O.Nome
-                           , CAST(FORMAT(IFNULL(O.ValorObjetivo,0),2,'pt_BR') AS VARCHAR(100)) AS ValorObjetivo
-                           , CAST(FORMAT(IFNULL(O.ValorAtual,0),2,'pt_BR') AS VARCHAR(100)) AS ValorAtual
+                           , FORMAT(IFNULL(O.ValorObjetivo,0),2,'pt_BR') AS ValorObjetivo
+                           , FORMAT(IFNULL(O.ValorAtual,0),2,'pt_BR') AS ValorAtual
                            , DATE_FORMAT(O.DataLimite, "%d/%m/%Y") AS DataLimite
                            , DATE_FORMAT(O.DataObjetivo, "%d/%m/%Y") AS DataObjetivo
                            , CASE WHEN DATE_FORMAT(O.DataLimite, "%d/%m/%Y") <= DATE_FORMAT(NOW(), "%d/%m/%Y") AND O.ValorAtual >= O.ValorObjetivo THEN 'Alcancado'

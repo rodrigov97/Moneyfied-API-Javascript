@@ -35,7 +35,7 @@ class DashboardRepository {
 
     getExpense(userId, req, res) {
         var script = `SELECT Descricao
-                           , CAST(FORMAT(IFNULL(ParcelaValor,0),2,'pt_BR') AS VARCHAR(100)) AS Valor
+                           , FORMAT(IFNULL(ParcelaValor,0),2,'pt_BR') AS Valor
                         FROM Despesa
                        WHERE UsuarioId = ${userId}
                          AND YEAR(DataPagamento) = YEAR(NOW())
