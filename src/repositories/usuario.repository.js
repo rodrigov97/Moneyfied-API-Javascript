@@ -212,12 +212,10 @@ class UsuarioRepository {
         try {
             sql.query(script, function (error, response) {
                 if (error) {
-                    res.send('Email não confirmado !');
-                    //res.status(301).redirect("http://localhost:4200/confirmation-response/email/false");
+                    res.status(301).redirect("http://localhost:4200/confirmation-response/email/false");
                 }
                 else {
-                    res.send('Email confirmado !');
-                    //res.status(301).redirect("http://localhost:4200/confirmation-response/email/true");
+                    res.status(301).redirect("http://localhost:4200/confirmation-response/email/true");
                 }
             });
         }

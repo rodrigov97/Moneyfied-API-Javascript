@@ -146,12 +146,10 @@ class MailerRepository {
 
                         mail.send(res, function (success, error) {
                             if (error) {
-                                res.send('Não foi possível gerar uma nova senha !');
-                                //res.status(301).redirect("http://localhost:4200/confirmation-response/password/false");
+                                res.status(301).redirect("http://localhost:4200/confirmation-response/password/false");
                             }
                             else {
-                                res.send('Nova senha gerada com sucesso !');
-                                //res.status(301).redirect("http://localhost:4200/confirmation-response/password/true");
+                                res.status(301).redirect("http://localhost:4200/confirmation-response/password/true");
                             }
                         });
                     }
