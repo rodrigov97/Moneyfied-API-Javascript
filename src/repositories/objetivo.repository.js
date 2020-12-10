@@ -160,7 +160,7 @@ class ObjetivoRepository {
 
     addAmount(goalId, amount, req, res) {
         var script = `UPDATE Objetivo
-                         SET ValorAtual(ValorAtual + ${amount})
+                         SET ValorAtual = (ValorAtual + ${amount})
                        WHERE ObjetivoId = ${goalId};`;
 
         try {
